@@ -90,4 +90,28 @@ public class Algoritmo1 {
         }
     }
     
+    public void calculaGruposEspecifico(int numPessoas, int numGrupos){
+        int g1 = 0; //uma das quantidades de grupos
+        int g2 = 0; //outra qnt de grupos
+        int G1 = 0; //qnt de pessoas no primeiro grupo
+        int G2 = 0; //outra qnt de pessoas nos grupo
+        
+        g2 = numPessoas%numGrupos;
+//        System.out.println("g2: "+g2);
+        g1 = numGrupos - g2;
+//        System.out.println("g1: "+g1);
+        G2 = (numPessoas/numGrupos) + 1;
+//        System.out.println("G2: "+G2);
+        G1 = numPessoas/numGrupos;
+//        System.out.println("G1: "+G1);
+        
+        if(g2 != 0){
+            System.out.println(g1 + " grupos de "+ G1 + " pessoas e "+g2+" de "+G2+" pessoas");
+        } else {
+            System.out.println(g1 + " grupos de "+ G1 +" pessoas");
+        }
+
+        
+    }
+    
 }
