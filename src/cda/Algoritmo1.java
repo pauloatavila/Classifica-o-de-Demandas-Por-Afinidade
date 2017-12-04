@@ -1,58 +1,57 @@
-
 package cda;
 
 import java.util.ArrayList;
 
-
 public class Algoritmo1 {
+
     public int pessoas;
     public int numMinimo = 2; //definindo o numero minimo de pessoas em cada grupo
-    
-    public Algoritmo1(int p){
+
+    public Algoritmo1(int p) {
         pessoas = p;
     }
-    
-    public int numMaxDeGrupos(){ //metodo para encontrar o num maximo de grupos
+
+    public int numMaxDeGrupos() { //metodo para encontrar o num maximo de grupos
         int i;
-        for(i=2; i< pessoas; i++){
-            if(pessoas/i < numMinimo){
+        for (i = 2; i < pessoas; i++) {
+            if (pessoas / i < numMinimo) {
                 break;
             }
         }
-        i = i-1;
+        i = i - 1;
         return i;
     }
-    
-    public void verificaTudo(){ //calcula pra cada num de grupo as possibilidades de divisao
-        for(int i = 2; i<=numMaxDeGrupos(); i++){
+
+    public void verificaTudo() { //calcula pra cada num de grupo as possibilidades de divisao
+        for (int i = 2; i <= numMaxDeGrupos(); i++) {
             calculaPossibilidades(i);
             System.out.println("\n");
         }
     }
-    
-    public void calculaPossibilidades(int grupo){ //calcula as possibilidades de divisao para aquela qnt de grupo
+
+    public void calculaPossibilidades(int grupo) { //calcula as possibilidades de divisao para aquela qnt de grupo
         int pessoasRestantes = pessoas;
         int gruposRestantes = grupo;
         ArrayList<Integer> qntGrupos = new ArrayList<>();
         ArrayList<Integer> qntPessoas = new ArrayList<>();
-        
-        while(gruposRestantes>0){
-            
-            int resto = (pessoasRestantes%gruposRestantes);
-            if (resto == 0){
-                
-                int result = pessoasRestantes/gruposRestantes;
-                
+
+        while (gruposRestantes > 0) {
+
+            int resto = (pessoasRestantes % gruposRestantes);
+            if (resto == 0) {
+
+                int result = pessoasRestantes / gruposRestantes;
+
                 boolean jaTem = false;
-                for(int i=0; i<qntGrupos.size(); i++){
-                    if(qntPessoas.get(i) == result){
+                for (int i = 0; i < qntGrupos.size(); i++) {
+                    if (qntPessoas.get(i) == result) {
                         jaTem = true;
-                        qntGrupos.set(i, qntGrupos.get(i)+1);
+                        qntGrupos.set(i, qntGrupos.get(i) + 1);
                         pessoasRestantes = 0;
                         gruposRestantes = 0;
                     }
                 }
-                if(!jaTem){
+                if (!jaTem) {
                     qntGrupos.add(gruposRestantes);
                     qntPessoas.add(result);
                     pessoasRestantes = 0;
@@ -60,23 +59,23 @@ public class Algoritmo1 {
                 }
             } else {
                 int incremento = pessoasRestantes + 1;
-                
-                while(incremento%gruposRestantes != 0){
+
+                while (incremento % gruposRestantes != 0) {
                     incremento++;
                 }
-                
-                int result = incremento/gruposRestantes;
-                
+
+                int result = incremento / gruposRestantes;
+
                 boolean jaTem = false;
-                for(int i=0; i<qntGrupos.size(); i++){
-                    if(qntPessoas.get(i) == result){
+                for (int i = 0; i < qntGrupos.size(); i++) {
+                    if (qntPessoas.get(i) == result) {
                         jaTem = true;
-                        qntGrupos.set(i, qntGrupos.get(i)+1);
+                        qntGrupos.set(i, qntGrupos.get(i) + 1);
                         pessoasRestantes = pessoasRestantes - result;
                         gruposRestantes--;
                     }
                 }
-                if(!jaTem){
+                if (!jaTem) {
                     qntGrupos.add(1);
                     qntPessoas.add(result);
                     pessoasRestantes = pessoasRestantes - result;
@@ -84,34 +83,29 @@ public class Algoritmo1 {
                 }
             }
         }
-        System.out.println("Com "+grupo+" grupos: ");
-        for(int i=0; i<qntGrupos.size(); i++){
-            System.out.println(qntGrupos.get(i)+"x"+qntPessoas.get(i));
+        System.out.println("Com " + grupo + " grupos: ");
+        for (int i = 0; i < qntGrupos.size(); i++) {
+            System.out.println(qntGrupos.get(i) + "x" + qntPessoas.get(i));
         }
     }
-    
-    public void calculaGruposEspecifico(int numPessoas, int numGrupos){
+
+    public void calculaGruposEspecifico(int numPessoas, int numGrupos) {
         int g1 = 0; //uma das quantidades de grupos
         int g2 = 0; //outra qnt de grupos
         int G1 = 0; //qnt de pessoas no primeiro grupo
         int G2 = 0; //outra qnt de pessoas nos grupo
-        
-        g2 = numPessoas%numGrupos;
-//        System.out.println("g2: "+g2);
+
+        g2 = numPessoas % numGrupos;
         g1 = numGrupos - g2;
-//        System.out.println("g1: "+g1);
-        G2 = (numPessoas/numGrupos) + 1;
-//        System.out.println("G2: "+G2);
-        G1 = numPessoas/numGrupos;
-//        System.out.println("G1: "+G1);
-        
-        if(g2 != 0){
-            System.out.println(g1 + " grupos de "+ G1 + " pessoas e "+g2+" de "+G2+" pessoas");
+        G2 = (numPessoas / numGrupos) + 1;
+        G1 = numPessoas / numGrupos;
+
+        if (g2 != 0) {
+            System.out.println(g1 + " grupos de " + G1 + " pessoas e " + g2 + " de " + G2 + " pessoas");
         } else {
-            System.out.println(g1 + " grupos de "+ G1 +" pessoas");
+            System.out.println(g1 + " grupos de " + G1 + " pessoas");
         }
 
-        
     }
-    
+
 }
