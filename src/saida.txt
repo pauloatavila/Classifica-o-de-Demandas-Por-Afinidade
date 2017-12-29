@@ -1,0 +1,4 @@
+Todas as 3 duplas possíveis e suas pontuações:
+Macaco e Elefante -> 76.63
+Zebra e Cavalo -> 39.6
+Pato e Baleia -> 15.18

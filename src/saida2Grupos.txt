@@ -1,0 +1,9 @@
+Grupo 1:
+Macaco
+Elefante
+Pato
+
+Grupo 2:
+Baleia
+Cavalo
+Zebra

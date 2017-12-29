@@ -30,7 +30,7 @@ public class Algoritmo2 {
 
     public void leituraArquivo() {
         //Altere o caminho correspondente para sua máquina
-        String arquivo = "/Users/pauloatavila/Faculdade/Classificação de Demandas Por Afinidade/Matriz Animais2.txt";
+        String arquivo = "src/Matriz Animais2.txt";
 
         //Código para leitura do arquivo
         try {
@@ -236,7 +236,7 @@ public class Algoritmo2 {
     }
 
     public void gravarArquivoSaida(int numGruposUsuario) {
-        File arquivoSaida = new File("/Users/pauloatavila/Faculdade/Classificação de Demandas Por Afinidade/saida.txt");
+        File arquivoSaida = new File("src/saida.txt");
 
         try {
             arquivoSaida.createNewFile();//arquivo criado
@@ -246,21 +246,66 @@ public class Algoritmo2 {
 
             //coloca todas as duplas possíveis no arquivo
             if (numGruposUsuario == 0) {
-                buffW.write("Todas as duplas possíveis e suas pontuações:");
+                buffW.write("Todas as " + duplas.size() + " duplas possíveis e suas pontuações:");
                 for (int i = 0; i < duplas.size(); i++) {
                     buffW.newLine();
                     buffW.write(duplas.get(i));
                 }
             } else { //coloca todas as melhores duplas no arquivo
-                buffW.write(numGruposUsuario + " duplas com as melhores pontuações:");
+                buffW.write(numGruposUsuario + " dupla(s) com a(s) melhor(es) pontuação(ões):");
                 for (int i = 0; i < numGruposUsuario; i++) {
                     buffW.newLine();
                     buffW.write(duplas.get(i));
                 }
             }
             buffW.close();
-            System.out.println("Arquivo de saída gerado com sucesso");
+            System.out.println("Arquivo de saída gerado com sucesso.");
         } catch (IOException io) {
+        }
+    }
+
+    //método para sortear de todos os itens, dois grupos aleatórios
+    public void sortearEmDoisGrupos() {
+        if (nomesAnimais.size() % 2 == 0) { //verifica se tem numero par de itens
+            File arquivoSaida = new File("src/saida2Grupos.txt");
+
+            try {
+                arquivoSaida.createNewFile();//arquivo criado
+                //ESCREVER
+                FileWriter fileW = new FileWriter(arquivoSaida);//arquivo para escrita
+                BufferedWriter buffW = new BufferedWriter(fileW);
+
+                buffW.write("Grupo 1:");
+                buffW.newLine();
+                //Faz uma cópia da lista de itens
+                ArrayList<String> nomesAnimaisCopia = new ArrayList<>();
+                nomesAnimaisCopia = nomesAnimais;
+                int tamanho = nomesAnimais.size()/2;
+                int numRandom = 0;
+                //Para um laço com tamano de metade dos itens:
+                for (int i = 0; i < tamanho; i++) {
+                    //Gera um item aleatório de todos os itens restantes da lista de cópia
+                    numRandom = (int) (Math.random() * (nomesAnimaisCopia.size() - 1));
+                    //Escreve este item no arquivo e depois remove-o da lista
+                    buffW.write(nomesAnimaisCopia.get(numRandom));
+                    buffW.newLine();
+                    nomesAnimaisCopia.remove(numRandom);
+                }
+                
+                buffW.newLine();
+                buffW.write("Grupo 2:");
+                buffW.newLine();
+                //Escreve todos os itens restantes da lista cópia no grupo 2
+                for (int i = 0; i < nomesAnimaisCopia.size(); i++) {
+                    buffW.write(nomesAnimaisCopia.get(i));
+                    buffW.newLine();
+                }
+                buffW.close();
+                System.out.println("Arquivo de saída dos dois grupos foi gerado com sucesso.");
+            } catch (IOException io) {
+            }
+        } else {
+            System.out.println("Número de insuficiente de itens para dividir em dois grupos.");
         }
     }
 }

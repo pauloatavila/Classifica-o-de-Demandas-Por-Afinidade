@@ -27,18 +27,24 @@ public class CDA {
            É informado o número de grupos (duplas), e são retornadas melhores
            duplas (número de duplas que o usuário informou).
            (Para executar, descomente as 9 linhas seguintes, e popule a variável
-           'numDeGrupos' e altere o caminho de leitura de arquivo na linha 31 e
-           de saída na linha 236 do arquivo 'Algoritmo2.java')
+           'numDeGrupos')
            (Se 'numDeGrupos' for igual a 0, serão mostradas todas as duplas)
         */
         int numDeGrupos = 0;
         Algoritmo2 alg2 = new Algoritmo2();
+        
         long tempoInicio = System.currentTimeMillis();
         long timeInicio2 = System.nanoTime();
         alg2.executa(numDeGrupos);
         long timeFinal2 = System.nanoTime();
         long elapsTime2 = timeFinal2 - timeInicio2;
         System.out.println("\nTempo Total de execução do Alg2: "+ TimeUnit.NANOSECONDS.convert(elapsTime2, TimeUnit.NANOSECONDS)+" nanosegundos");
+        
+        /*
+           Este é um recurso extra, em que consiste na divisão da lista de itens
+           em duas, gerando assim dois grupos aleatórios de itens.
+        */
+        alg2.sortearEmDoisGrupos();
     }
 
 }
