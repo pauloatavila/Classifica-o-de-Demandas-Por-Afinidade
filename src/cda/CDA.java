@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 public class CDA {
 
     public static void main(String[] args) {
+        Algoritmo3 alg3 = new Algoritmo3();
+        alg3.combinacoes();
         
         /* Código para execução do Algoritmo 1:
            É informado o número de personagens, e são retornadas todas as
@@ -30,21 +32,21 @@ public class CDA {
            'numDeGrupos')
            (Se 'numDeGrupos' for igual a 0, serão mostradas todas as duplas)
         */
-        int numDeGrupos = 0;
-        Algoritmo2 alg2 = new Algoritmo2();
-        
-        long tempoInicio = System.currentTimeMillis();
-        long timeInicio2 = System.nanoTime();
-        alg2.executa(numDeGrupos);
-        long timeFinal2 = System.nanoTime();
-        long elapsTime2 = timeFinal2 - timeInicio2;
-        System.out.println("\nTempo Total de execução do Alg2: "+ TimeUnit.NANOSECONDS.convert(elapsTime2, TimeUnit.NANOSECONDS)+" nanosegundos");
+//        int numDeGrupos = 0;
+//        Algoritmo2 alg2 = new Algoritmo2();
+//        
+//        long tempoInicio = System.currentTimeMillis();
+//        long timeInicio2 = System.nanoTime();
+//        alg2.executa(numDeGrupos);
+//        long timeFinal2 = System.nanoTime();
+//        long elapsTime2 = timeFinal2 - timeInicio2;
+//        System.out.println("\nTempo Total de execução do Alg2: "+ TimeUnit.NANOSECONDS.convert(elapsTime2, TimeUnit.NANOSECONDS)+" nanosegundos");
         
         /*
            Este é um recurso extra, em que consiste na divisão da lista de itens
            em duas, gerando assim dois grupos aleatórios de itens.
         */
-        alg2.sortearEmDoisGrupos();
+//        alg2.sortearEmDoisGrupos();
     }
 
 }
