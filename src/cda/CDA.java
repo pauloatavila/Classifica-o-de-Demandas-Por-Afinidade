@@ -6,7 +6,8 @@ public class CDA {
 
     public static void main(String[] args) {
         Algoritmo3 alg3 = new Algoritmo3();
-        alg3.combinacoes();
+//        alg3.combinacoes();
+        alg3.preparaCombinacoes(8);
         
         /* Código para execução do Algoritmo 1:
            É informado o número de personagens, e são retornadas todas as
